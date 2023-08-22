@@ -6,7 +6,7 @@ import android.widget.AbsListView
 import android.widget.BaseAdapter
 import android.widget.ImageView
 
-class ImageAdapter : BaseAdapter() {
+class ImageGridViewAdapter : BaseAdapter() {
     //BaseAdapter은 추상클래스이다 그래서 추상메서드를 모두 상속받아야한다. (getCount,getItem,getItemId,getView)
     override fun getCount(): Int {
         //데이터의 갯수
