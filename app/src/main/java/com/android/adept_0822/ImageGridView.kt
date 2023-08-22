@@ -14,7 +14,7 @@ class ImageGridView : AppCompatActivity() {
         binding = ActivityImageGridViewBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.imageGridView.adapter = ImageAdapter()
+        binding.imageGridView.adapter = ImageGridViewAdapter()
         //imageGridView : xml의 id
 
         binding.imageGridView.setOnItemClickListener{parent,view,position,id ->
