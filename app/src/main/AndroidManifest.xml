@@ -13,6 +13,9 @@
         android:theme="@style/Theme.Adept_0822"
         tools:targetApi="31">
         <activity
+            android:name=".RecyclerView"
+            android:exported="false" />
+        <activity
             android:name=".CustomItem"
             android:exported="false" />
         <activity
@@ -28,7 +31,7 @@
             android:name=".veiwBindingActivity"
             android:exported="false" />
         <activity
-            android:name=".RecyclerView"
+            android:name=".MainFrgActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
