@@ -31,8 +31,6 @@ class CustomItem : AppCompatActivity() {
             // as MyItem : getItem메서드가 반환하는 객체를 MyItem 클래스로 형변환, MyItem 클래스의 객체로 사용하기 위해
             //즉, osition에 해당하는 항목의 이름을 바인딩을 통해 가져와서 name변수에 저장
             Toast.makeText(this, " $name 선택!", Toast.LENGTH_SHORT).show()
-
         }
     }
-
 }
