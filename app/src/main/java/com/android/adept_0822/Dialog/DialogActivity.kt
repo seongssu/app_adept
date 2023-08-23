@@ -128,13 +128,23 @@ class DialogActivity : AppCompatActivity() {
             picker.show()
         }
 
-        //5.1 ProgressDialog(권장하지 않는 옛날방식)
+//        //5.1 ProgressDialog(권장하지 않는 옛날방식)
+//        binding.btn5Progress.setOnClickListener {
+//            pro = ProgressDialog.show(this,"타이틀입니다.", "메시지입니다.")
+//            // 클래스변수로 pro를 선언해준다.
+//            val handler = Handler()
+//            val thread = Runnable { pro?.cancel()}
+//            handler.postDelayed(thread, 5000)
+//        }
+        //5.2 ProgressDialog
         binding.btn5Progress.setOnClickListener {
-            pro = ProgressDialog.show(this,"타이틀입니다.", "메시지입니다.")
-            // 클래스변수로 pro를 선언해준다.
-            val handler = Handler()
-            val thread = Runnable { pro?.cancel()}
-            handler.postDelayed(thread, 5000)
+            val builder = AlertDialog.Builder(this)
+            builder.setTitle("프로그래스바")
+            builder.setIcon(R.mipmap.btn1)
+
+            val v1 = layoutInflater.inflate(R.layout.progressbar,null)
+            builder.setView(v1)
+            builder.show()
         }
     }
 }
