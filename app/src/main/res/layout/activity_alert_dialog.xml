@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context=".AlertDialog.AlertDialogActivity">
+    tools:context=".Dialog.DialogActivity">
 
 
     <TextView
@@ -49,4 +49,5 @@
         android:layout_marginTop="20dp"
         android:layout_height="wrap_content"
         android:text="progress dialog" />
+
 </LinearLayout>

@@ -1,4 +1,4 @@
-package com.android.adept_0822.AlertDialog
+package com.android.adept_0822.Dialog
 
 import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
@@ -7,13 +7,14 @@ import androidx.appcompat.app.AlertDialog
 import com.android.adept_0822.R
 import com.android.adept_0822.databinding.ActivityAlertDialogBinding
 
-class AlertDialogActivity : AppCompatActivity() {
+class DialogActivity : AppCompatActivity() {
     val binding by lazy { ActivityAlertDialogBinding.inflate(layoutInflater) }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_alert_dialog)
         setContentView(binding.root)
 
+        // 1. AlertDialog
         binding.btn1Alert.setOnClickListener {
             var builder = AlertDialog.Builder(this)
             //다이얼로그를 설정하기 위한 AlertDialog.Builder 객체를 생성
@@ -59,4 +60,9 @@ class AlertDialogActivity : AppCompatActivity() {
             builder.show()
         }
     }
+
+        // 2. CustomDialog
+
+
+
 }
