@@ -1,6 +1,7 @@
 package com.android.adept_0822.Dialog
 
 import android.app.DatePickerDialog
+import android.app.TimePickerDialog
 import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -107,6 +108,19 @@ class DialogActivity : AppCompatActivity() {
             var picker = DatePickerDialog(this,listener, year, month, day)
             //listener: 내가 뭔가를 선택했을때
             //year,month,day에 각각 위에서 받아온것들을 채워준다.
+            picker.show()
+        }
+
+        //4. TimePickerDialog
+        binding.btn4Time.setOnClickListener {
+            val calendar = Calendar.getInstance()
+            val hour = calendar.get(Calendar.HOUR)
+            val minute = calendar.get(Calendar.MINUTE)
+
+            val listener = TimePickerDialog.OnTimeSetListener { timePicker, i, i2 ->
+                binding.tvTitle.text = "${i}시 ${i2}분"
+            }
+            val picker = TimePickerDialog(this, listener, hour, minute, false)
             picker.show()
         }
     }
