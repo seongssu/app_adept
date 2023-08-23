@@ -1,5 +1,6 @@
 package com.android.adept_0822.Dialog
 
+import android.app.DatePickerDialog
 import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,6 +8,7 @@ import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
 import com.android.adept_0822.R
 import com.android.adept_0822.databinding.ActivityAlertDialogBinding
+import java.util.Calendar
 
 class DialogActivity : AppCompatActivity() {
     val binding by lazy { ActivityAlertDialogBinding.inflate(layoutInflater) }
@@ -87,6 +89,25 @@ class DialogActivity : AppCompatActivity() {
             //취소버튼을 추가하고, null을 호출하기때문에 아무일도 일어나지않고 다이얼로그만 닫힌다.
 
             builder.show()
+        }
+
+        // 3. DatePickerDialog
+        binding.btn3Date.setOnClickListener {
+            val calendar = Calendar.getInstance()
+            val year = calendar.get(Calendar.YEAR)
+            val month = calendar.get(Calendar.MONTH)
+            val day = calendar.get(Calendar.DAY_OF_MONTH)
+            //Calendar.getInstance() 객체를 가져와서 초기 날짜로 현재 년도(year), 월(month), 일(day)을 설정
+
+            val listener = DatePickerDialog.OnDateSetListener{datePicker, i,i2,i3 ->
+                //여기에서는 AlertDialog를 안쓴다.
+                binding.tvTitle.text = "${i}년 ${i2}요일 ${i3}일"
+            }
+
+            var picker = DatePickerDialog(this,listener, year, month, day)
+            //listener: 내가 뭔가를 선택했을때
+            //year,month,day에 각각 위에서 받아온것들을 채워준다.
+            picker.show()
         }
     }
 }
