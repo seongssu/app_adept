@@ -101,7 +101,7 @@ class DialogActivity : AppCompatActivity() {
 
             val listener = DatePickerDialog.OnDateSetListener{datePicker, i,i2,i3 ->
                 //여기에서는 AlertDialog를 안쓴다.
-                binding.tvTitle.text = "${i}년 ${i2}요일 ${i3}일"
+                binding.tvTitle.text = "${i}년 ${i2+1}월 ${i3}일"
             }
 
             var picker = DatePickerDialog(this,listener, year, month, day)
