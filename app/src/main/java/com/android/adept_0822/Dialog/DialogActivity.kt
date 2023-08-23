@@ -1,10 +1,12 @@
 package com.android.adept_0822.Dialog
 
 import android.app.DatePickerDialog
+import android.app.ProgressDialog
 import android.app.TimePickerDialog
 import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
 import com.android.adept_0822.R
@@ -12,6 +14,8 @@ import com.android.adept_0822.databinding.ActivityAlertDialogBinding
 import java.util.Calendar
 
 class DialogActivity : AppCompatActivity() {
+    var pro: ProgressDialog? = null
+    //5.1의 pro: ProgressDialog를 생성하기 전에 pro가 null인지 체크하여 안전하게 사용
     val binding by lazy { ActivityAlertDialogBinding.inflate(layoutInflater) }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -122,6 +126,15 @@ class DialogActivity : AppCompatActivity() {
             }
             val picker = TimePickerDialog(this, listener, hour, minute, false)
             picker.show()
+        }
+
+        //5.1 ProgressDialog(권장하지 않는 옛날방식)
+        binding.btn5Progress.setOnClickListener {
+            pro = ProgressDialog.show(this,"타이틀입니다.", "메시지입니다.")
+            // 클래스변수로 pro를 선언해준다.
+            val handler = Handler()
+            val thread = Runnable { pro?.cancel()}
+            handler.postDelayed(thread, 5000)
         }
     }
 }
