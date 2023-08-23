@@ -3,6 +3,7 @@ package com.android.adept_0822.Dialog
 import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
 import com.android.adept_0822.R
 import com.android.adept_0822.databinding.ActivityAlertDialogBinding
@@ -16,7 +17,7 @@ class DialogActivity : AppCompatActivity() {
 
         // 1. AlertDialog
         binding.btn1Alert.setOnClickListener {
-            var builder = AlertDialog.Builder(this)
+            val builder = AlertDialog.Builder(this)
             //다이얼로그를 설정하기 위한 AlertDialog.Builder 객체를 생성
             builder.setTitle("기본 다이얼로그 타이틀")
             //다이얼로그 상단에 표시될 텍스트, TextView를 표시할떄 setText랑 비슷한 사용법
@@ -59,10 +60,33 @@ class DialogActivity : AppCompatActivity() {
 
             builder.show()
         }
-    }
 
         // 2. CustomDialog
+        binding.btn2Custom.setOnClickListener {
+            val builder = AlertDialog.Builder(this)
+            builder.setTitle("커스텀 다이얼로그")
+            builder.setIcon(R.mipmap.btn1)
 
+            val v1 = layoutInflater.inflate(R.layout.activity_custom_dialog,null)
+            // 일반적으로 부모뷰를 null로 설정한다. (다이얼로그 내의 컨텐츠는 일반적으로 독립적으로 존재하며 다른 뷰의 하위 요소로 추가되지 않기 때문에)
+            builder.setView(v1)
 
+            val listener = DialogInterface.OnClickListener {  p0,p1 ->
+                //같은 클래스내에서 이미 object:를 사용해서 DialogInterface를 구현했기때문에 다시 구현안해도된다.
+                val alert = p0 as AlertDialog
+                val edit1:EditText? = alert.findViewById<EditText>(R.id.editText1)
+                val edit2:EditText? = alert.findViewById<EditText>(R.id.editText2)
 
+                binding.tvTitle.text = "이름 : ${edit1?.text}"
+                binding.tvTitle.append(" /나이 : ${edit2?.text}")
+                //append : 기존 text뒤에 내용을 붙일 수 있다.
+            }
+            builder.setPositiveButton("확인", listener)
+            //다이얼로그에 확인버튼을 추가하고, 클릭했을때 listener를 호출한다.
+            builder.setNegativeButton("취소", null)
+            //취소버튼을 추가하고, null을 호출하기때문에 아무일도 일어나지않고 다이얼로그만 닫힌다.
+
+            builder.show()
+        }
+    }
 }
